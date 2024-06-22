@@ -197,3 +197,25 @@ export const bulk = async(req, res) =>{
     }
    
 }
+
+export const profile = async(req, res) => {
+    const userId = req.userId;
+    try{
+        const user = await User.findById(userId);
+        if(user){
+            res.status(200).json({
+                message: "user details",
+                user: user
+            });
+        }else {
+            return res.status(404).json({
+                message: "User not found!"
+            });
+        }
+    }catch(error){
+        res.status(500).json({
+            message: "User not found!"
+        })
+    }
+
+}
