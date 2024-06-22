@@ -179,8 +179,8 @@ export const bulk = async(req, res) =>{
                 lastname: {
                     $regex: filterRegex,
                     // $options: "i"
-                }
-        }]        
+                }}],
+        _id: { $ne: userId }       
         })
         res.json({
             user: users.map(user => ({
