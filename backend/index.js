@@ -1,6 +1,10 @@
+import { config } from "dotenv";
+config({
+  path: "./config.env",
+});
 import express from "express";
-import mainRouter from "./routes/index";
-import { connectDB } from "./db";
+import mainRouter from "./routes/index.js";
+import { connectDB } from "./db.js";
 import cors from 'cors'
 
 const app = express();
@@ -11,11 +15,15 @@ const app = express();
 
 connectDB();
 
-app.use(cors());
+app.use(cors({
+    // credentials: true,
+    // path: 'localhost:5173'
+    
+}));
 app.use(express.json());
-app.use('api/v1', mainRouter);
+app.use('/api/v1', mainRouter);
 
 
-const listen = app.listen('3000', () =>{
+const listen = app.listen(process.env.PORT, () =>{
     console.log("Running");
 })
