@@ -207,15 +207,17 @@ export const profile = async(req, res) => {
                 message: "user details",
                 user: user
             });
-        }else {
-            return res.status(404).json({
-                message: "User not found!"
-            });
         }
     }catch(error){
-        res.status(500).json({
+       return res.status(500).json({
             message: "User not found!"
         })
     }
 
+}
+
+export const logout = async(req, res) =>{
+    return res.json({
+        message:"Logout successfully"
+    })
 }
