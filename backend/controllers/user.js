@@ -1,6 +1,6 @@
 import { User } from "../model/users.js";
 import {Account }from '../model/accounts.js'
-import {ParseStatus, string, z} from 'zod';
+import { z} from 'zod';
 import jwt  from "jsonwebtoken";
 import bcrypt from "bcryptjs"
 

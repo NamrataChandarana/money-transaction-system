@@ -9,17 +9,13 @@ import cors from 'cors'
 
 const app = express();
 
-// app.get('/', (req,res) =>{
-//     res.send("home");
-// })
-
 connectDB();
 
 app.use(cors({
-    // credentials: true,
-    // path: 'localhost:5173'
-    
+  origin: process.env.FRONTEND_URL,
+  credentials: true,
 }));
+
 app.use(express.json());
 app.use('/api/v1', mainRouter);
 
